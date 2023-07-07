@@ -2,7 +2,7 @@ import InputGroup from './InputGroup';
 import Actions from './Actions';
 import { useState } from 'react';
 
-const Form = ({ calculateHandler }) => {
+const Form = ({ calculateHandler, setResultData }) => {
   // controlled input
   const [userInput, setUserInput] = useState({
     'current-savings': '',
@@ -10,13 +10,12 @@ const Form = ({ calculateHandler }) => {
     'expected-return': '',
     duration: '',
   });
-  // console.log(userInput);
 
   const submitFormHandler = (e) => {
     e.preventDefault();
-    console.log('Submitted');
+    // check for empty fields
 
-    // calculateHandler(userInput)
+    calculateHandler(userInput);
   };
 
   const resetFormHandler = () => {
@@ -26,7 +25,7 @@ const Form = ({ calculateHandler }) => {
       'expected-return': '',
       duration: '',
     });
-    console.log('Reset');
+    setResultData([]);
   };
 
   return (

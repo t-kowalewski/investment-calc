@@ -1,24 +1,43 @@
-const Result = () => {
+const formatter = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2,
+});
+
+const Result = ({ data }) => {
   return (
     <table className='result'>
       <thead>
         <tr>
           <th>Year</th>
-          <th>Total Savings</th>
+          <th>Invested Capital</th>
           <th>Interest (Year)</th>
           <th>Total Interest</th>
-          <th>Invested Capital</th>
+          <th>Total Savings</th>
         </tr>
       </thead>
 
       <tbody>
-        <tr>
-          <td>YEAR NUMBER</td>
-          <td>TOTAL SAVINGS END OF YEAR</td>
-          <td>INTEREST GAINED IN YEAR</td>
-          <td>TOTAL INTEREST GAINED</td>
-          <td>TOTAL INVESTED CAPITAL</td>
-        </tr>
+        {data.map((item) => {
+          const {
+            year,
+            yearlyInterest,
+            savingsEndOfYear,
+            yearlyContribution,
+            totalInvestedCapital,
+          } = item;
+
+          return (
+            <tr key={year}>
+              <td>{year}</td>
+              <td>{formatter.format(totalInvestedCapital)}</td>
+              <td>{formatter.format(yearlyInterest)}</td>
+              <td>{formatter.format(yearlyContribution)}</td>
+              <td>{formatter.format(savingsEndOfYear)}</td>
+            </tr>
+          );
+        })}
       </tbody>
     </table>
   );
