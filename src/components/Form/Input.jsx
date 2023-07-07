@@ -1,12 +1,14 @@
-import { useState } from 'react';
-
-const Input = ({ labelName, labelText }) => {
-  // controlled input
-  const [value, setValue] = useState('');
-  console.log(value);
-
-  const validateInputHandler = (e) => {
-    setValue(e.target.value);
+const Input = ({ labelName, labelText, value, setUserInput }) => {
+  const updateInputHandler = (e) => {
+    // validate input
+    if (e.target.value && +e.target.value) {
+      setUserInput((prevState) => {
+        return {
+          ...prevState,
+          [labelName]: e.target.value,
+        };
+      });
+    }
   };
 
   return (
@@ -16,7 +18,7 @@ const Input = ({ labelName, labelText }) => {
         type='number'
         id={labelName}
         value={value}
-        onChange={validateInputHandler}
+        onChange={updateInputHandler}
       />
     </p>
   );
