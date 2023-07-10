@@ -1,14 +1,11 @@
 const Input = ({ labelName, labelText, value, setUserInput }) => {
   const updateInputHandler = (e) => {
-    // validate input
-    if (e.target.value && +e.target.value) {
-      setUserInput((prevState) => {
-        return {
-          ...prevState,
-          [labelName]: e.target.value,
-        };
-      });
-    }
+    setUserInput((prevState) => {
+      return {
+        ...prevState,
+        [labelName]: e.target.value,
+      };
+    });
   };
 
   return (

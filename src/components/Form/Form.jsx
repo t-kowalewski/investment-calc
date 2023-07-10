@@ -14,6 +14,12 @@ const Form = ({ calculateHandler, setResultData }) => {
   const submitFormHandler = (e) => {
     e.preventDefault();
     // check for empty fields
+    for (const key in userInput) {
+      if (!userInput[key]) {
+        alert('Please fill in all fields');
+        return;
+      }
+    }
 
     calculateHandler(userInput);
   };
@@ -25,7 +31,7 @@ const Form = ({ calculateHandler, setResultData }) => {
       'expected-return': '',
       duration: '',
     });
-    setResultData([]);
+    setResultData([]); // clear result table
   };
 
   return (
