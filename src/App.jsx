@@ -31,7 +31,6 @@ function App() {
         totalInvestedCapital: investedCapital,
       });
     }
-    console.log(yearlyData);
 
     setResultData(yearlyData);
   };
@@ -44,7 +43,7 @@ function App() {
       {resultData.length > 0 ? (
         <Result data={resultData} />
       ) : (
-        <p style={{ textAlign: 'center' }}>Please submit form to see result</p>
+        <p className='fallback'>Please submit form to see result</p>
       )}
     </div>
   );

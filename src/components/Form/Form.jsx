@@ -1,6 +1,10 @@
 import InputGroup from './InputGroup';
 import Actions from './Actions';
+import styles from './Form.module.css';
+
 import { useState } from 'react';
+
+const { form } = styles;
 
 const Form = ({ calculateHandler, setResultData }) => {
   // controlled input
@@ -35,7 +39,7 @@ const Form = ({ calculateHandler, setResultData }) => {
   };
 
   return (
-    <form className='form' onSubmit={submitFormHandler}>
+    <form className={form} onSubmit={submitFormHandler}>
       <InputGroup
         labelNames={['current-savings', 'yearly-contribution']}
         labelTexts={['Current Savings ($)', 'Yearly Savings ($)']}

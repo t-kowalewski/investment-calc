@@ -1,8 +1,11 @@
 import Input from './Input';
+import styles from './InputGroup.module.css';
+
+const { 'input-group': inputGroup } = styles;
 
 const InputGroup = ({ labelNames, labelTexts, values, setUserInput }) => {
   return (
-    <div className='input-group'>
+    <div className={inputGroup}>
       <Input
         labelName={labelNames[0]}
         labelText={labelTexts[0]}
