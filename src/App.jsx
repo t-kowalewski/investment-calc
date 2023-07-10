@@ -1,4 +1,4 @@
-import Header from './components/Header';
+import Header from './components/Header/Header';
 import Form from './components/Form/Form';
 import Result from './components/Result/Result';
 import { useState } from 'react';
